@@ -1,0 +1,29 @@
+<div class="container my-5">
+  <h2 class="mb-4 text-center">アカウント情報</h2> <!-- ← text-center を追加 -->
+
+  <table class="table table-bordered w-75 mx-auto">
+    <tbody>
+      <tr>
+        <th class="w-25 bg-light">ユーザー名</th>
+        <td><%= @user.name %> さん</td> <!-- ← 「さん」を追加 -->
+      </tr>
+
+      <tr>
+        <th class="bg-light">パスワード</th>
+        <td>
+          <%= link_to "変更する", edit_account_path, class: "btn btn-outline-primary btn-sm" %>
+        </td>
+      </tr>
+
+      <tr>
+        <th class="bg-light">退会</th>
+        <td>
+          <%= button_to "退会する", account_path, 
+                method: :delete,
+                data: { turbo_confirm: "本当に退会しますか？" },
+                class: "btn btn-outline-danger btn-sm" %>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
