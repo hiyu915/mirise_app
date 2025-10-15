@@ -1,0 +1,12 @@
+ja:
+  activerecord:
+    models:
+      user: ユーザー
+    attributes:
+      user:
+        name: ユーザー名
+        password: パスワード
+  errors:
+    messages:
+      taken: "はすでに登録されています"
+      blank: "を入力してください"

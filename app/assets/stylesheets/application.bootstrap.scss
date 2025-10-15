@@ -1,2 +1,39 @@
 @import 'bootstrap/scss/bootstrap';
 @import 'bootstrap-icons/font/bootstrap-icons';
+
+// ログインしていない時のオーバーレイ
+#login-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.9);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(6px);
+  text-align: center;
+  pointer-events: all;
+}
+
+.overlay-content {
+  background: #fff;
+  border-radius: 12px;
+  padding: 2rem 3rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  max-width: 400px;
+  width: 90%;
+}
+
+.overlay-content h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.overlay-content a {
+  text-decoration: none;
+  color: #0d6efd;
+  font-weight: bold;
+}

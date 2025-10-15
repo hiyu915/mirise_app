@@ -8,8 +8,36 @@
 
       <!-- 右側：ボタン類 -->
       <div class="ms-auto d-flex align-items-center flex-wrap gap-2">
+
         <%= link_to 'マスターデータの追加', "#", class: 'btn btn-outline-primary btn-sm' %>
-        <%= link_to 'アカウント情報', "#", class: 'btn btn-outline-secondary btn-sm' %>
+
+        <!-- ▼ アカウント情報ドロップダウン ▼ -->
+        <div class="dropdown">
+          <button class="btn btn-outline-secondary btn-sm dropdown-toggle" type="button" id="accountDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+            アカウント情報
+          </button>
+
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="accountDropdown">
+            <% if logged_in? %>
+              <li>
+                <%= link_to "#{current_user.name || current_user.email} さん", account_path, class: 'dropdown-item fw-bold' %>
+              </li>
+              <li><hr class="dropdown-divider"></li>
+              <li>
+                <%= link_to 'ログアウト', logout_path, data: { turbo_method: :delete, turbo_confirm: "ログアウトしますか？" }, class: 'dropdown-item text-danger' %>
+              </li>
+            <% else %>
+              <li>
+                <%= link_to 'ログイン', login_path, class: 'dropdown-item' %>
+              </li>
+              <li>
+                <%= link_to '新規登録', signup_path, class: 'dropdown-item' %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+        <!-- ▲ アカウント情報ドロップダウン ▲ -->
+
       </div>
     </div>
   </nav>

@@ -2,3 +2,11 @@
 import "@hotwired/turbo-rails"
 import "controllers"
 import * as bootstrap from "bootstrap"
+
+document.addEventListener("turbo:load", () => {
+  // Bootstrap の dropdown を再初期化
+  const dropdownTriggerList = [].slice.call(document.querySelectorAll('.dropdown-toggle'))
+  dropdownTriggerList.map(function (dropdownToggleEl) {
+    return new bootstrap.Dropdown(dropdownToggleEl)
+  })
+})

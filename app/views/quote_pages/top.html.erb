@@ -63,3 +63,13 @@
     <button type="submit" class="btn btn-primary px-5">確認</button>
   </div>
 </div>
+
+<% unless logged_in? %>
+  <!-- オーバーレイ -->
+  <div id="login-overlay">
+    <div class="overlay-content text-center">
+      <p>操作するにはログインが必要です。</p>
+      <%= link_to "ログインページへ", login_path, class: "btn btn-primary mt-3" %>
+    </div>
+  </div>
+<% end %>
