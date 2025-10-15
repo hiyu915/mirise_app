@@ -1,0 +1,16 @@
+<header>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <!-- 左側：ロゴ -->
+      <%= link_to '/', class: 'navbar-brand' do %>
+        <%= image_tag 'logo.gif', alt: 'Logo', height: '40' %>
+      <% end %>
+
+      <!-- 右側：ボタン類 -->
+      <div class="ms-auto d-flex align-items-center flex-wrap gap-2">
+        <%= link_to 'マスターデータの追加', "#", class: 'btn btn-outline-primary btn-sm' %>
+        <%= link_to 'アカウント情報', "#", class: 'btn btn-outline-secondary btn-sm' %>
+      </div>
+    </div>
+  </nav>
+</header>
