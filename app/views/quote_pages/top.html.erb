@@ -1,0 +1,65 @@
+<div class="container py-5">
+  <div class="text-center mb-5">
+    <h1 class="fw-bold">見積もり入力</h1>
+  </div>
+
+  <table class="table table-bordered align-middle w-75 mx-auto">
+    <tbody>
+      <!-- 本体 -->
+      <tr>
+        <th class="w-25">本体</th>
+        <td>
+          <div class="input-group w-auto">
+            <input type="number" class="form-control" placeholder="金額を入力">
+            <span class="input-group-text">円</span>
+          </div>
+        </td>
+      </tr>
+
+      <!-- クーポンの使用 -->
+      <tr>
+        <th>クーポンの使用</th>
+        <td>
+          <div class="input-group w-auto">
+            <span class="input-group-text">−</span>
+            <input type="number" class="form-control" placeholder="値引きを入力">
+            <span class="input-group-text">円</span>
+          </div>
+        </td>
+      </tr>
+
+      <!-- 設定内容 -->
+      <tr>
+        <th>設定内容</th>
+        <td>
+          <button type="button" class="btn btn-outline-primary">設定内容を追加</button>
+        </td>
+      </tr>
+
+      <!-- その他の内容 -->
+      <tr>
+        <th>その他の内容</th>
+        <td>
+          <button type="button" class="btn btn-outline-primary">その他の内容を追加</button>
+        </td>
+      </tr>
+
+      <!-- ポイントの使用 -->
+      <tr>
+        <th>ポイントの使用</th>
+        <td>
+          <div class="input-group w-auto">
+            <input type="number" class="form-control" placeholder="ポイント数を入力">
+            <span class="input-group-text">P</span>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- ボタンエリア -->
+  <div class="d-flex justify-content-center gap-3 mt-4">
+    <button type="button" class="btn btn-secondary px-4">支払いを分ける</button>
+    <button type="submit" class="btn btn-primary px-5">確認</button>
+  </div>
+</div>
