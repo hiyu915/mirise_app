@@ -1,6 +1,6 @@
 class MasterDataController < ApplicationController
   def new
-    @type = params[:type] || 'setting'
+    @type = params[:type] || "setting"
     @setting = Setting.new
     @product = Product.new
 
@@ -12,25 +12,25 @@ class MasterDataController < ApplicationController
 
   def create
     case params[:type]
-    when 'setting'
+    when "setting"
       @record = Setting.new(setting_params)
-    when 'product'
+    when "product"
       @record = Product.new(product_params)
     end
 
     if @record.save
       # type に応じてリダイレクト先を切り替える
-      redirect_to master_data_path(type: params[:type]), notice: '登録が完了しました', status: :see_other
+      redirect_to master_data_path(type: params[:type]), notice: "登録が完了しました", status: :see_other
     else
       render :new, status: :unprocessable_entity
     end
   end
 
   def index
-    @type = params[:type] || 'setting'
+    @type = params[:type] || "setting"
     @records =
       case @type
-      when 'setting'
+      when "setting"
         Setting.order(created_at: :desc)
       else
         Product.order(created_at: :desc)

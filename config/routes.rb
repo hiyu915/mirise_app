@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [ :new, :create ]
 
-  resources :master_data, only: [:new, :create, :index, :edit, :update, :destroy]
+  resources :master_data, only: [ :new, :create, :index, :edit, :update, :destroy ]
 
   resource :account, only: [ :show, :destroy ] do
     get "edit_password", to: "accounts#edit_password"
