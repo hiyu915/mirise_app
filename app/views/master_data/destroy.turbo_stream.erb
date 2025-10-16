@@ -1,0 +1,7 @@
+<%= turbo_stream.remove "#{@type}_#{@record.id}" %>
+
+<%= turbo_stream.update "flash" do %>
+  <div class="alert alert-success">
+    削除しました。
+  </div>
+<% end %>

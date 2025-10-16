@@ -1,0 +1,52 @@
+<table class="table table-hover text-center align-middle">
+  <thead class="table-light">
+    <% if type == "setting" %>
+      <tr>
+        <th>設定名</th>
+        <th>POS番号</th>
+        <th>価格（税込）</th>
+        <th>作成日</th>
+        <th>操作</th>
+      </tr>
+    <% else %>
+      <tr>
+        <th>製品名</th>
+        <th>価格（税込）</th>
+        <th>作成日</th>
+        <th>操作</th>
+      </tr>
+    <% end %>
+  </thead>
+
+  <tbody>
+    <% records.each do |r| %>
+      <% dom_id_str = "#{type}_#{r.id}" %>
+      <% if type == "setting" %>
+        <tr id="<%= dom_id_str %>">
+          <td><%= r.name %></td>
+          <td><%= r.pos_numbers %></td>
+          <td><%= number_to_currency(r.price, unit: "", precision: 0) %> 円</td>
+          <td><%= r.created_at.strftime("%Y-%m-%d") if r.created_at.present? %></td>
+          <td>
+            <%= link_to "編集", edit_master_datum_path(r, type: type), class: "btn btn-sm btn-outline-primary me-2" %>
+            <%= link_to "削除", master_datum_path(r, type: type),
+                        data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" },
+                        class: "btn btn-sm btn-outline-danger" %>
+          </td>
+        </tr>
+      <% else %>
+        <tr id="<%= dom_id_str %>">
+          <td><%= r.name %></td>
+          <td><%= number_to_currency(r.price, unit: "", precision: 0) %> 円</td>
+          <td><%= r.created_at.strftime("%Y-%m-%d") if r.created_at.present? %></td>
+          <td>
+            <%= link_to "編集", edit_master_datum_path(r, type: "product"), class: "btn btn-sm btn-outline-primary me-2" %>
+            <%= link_to "削除", master_datum_path(r, type: "product"),
+                        data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" },
+                        class: "btn btn-sm btn-outline-danger" %>
+          </td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>

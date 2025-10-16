@@ -1,0 +1,12 @@
+<turbo-frame id="master_data_form">
+  <h1 class="mb-4 text-center">
+    <%= @type == "setting" ? "設定の編集" : "製品の編集" %>
+  </h1>
+
+  <div class="mx-auto w-50">
+    <%= render 'form',
+         type: @type,
+         setting: (@type == "setting" ? @record : Setting.new),
+         product: (@type == "product" ? @record : Product.new) %>
+  </div>
+</turbo-frame>

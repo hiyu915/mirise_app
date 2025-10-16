@@ -6,7 +6,24 @@ ja:
       user:
         name: ユーザー名
         password: パスワード
+      product:
+        name: "製品名"
+        price: "価格"
+      setting:
+        name: "設定名"
+        price: "価格"
+        pos_numbers: "POS番号"
+
   errors:
     messages:
       taken: "はすでに登録されています"
       blank: "を入力してください"
+    models:
+      product:
+        attributes:
+          name:
+            too_long: "は%{count}文字以内で入力してください"
+      setting:
+        attributes:
+          name:
+            too_long: "は%{count}文字以内で入力してください"
