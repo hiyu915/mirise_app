@@ -1,5 +1,9 @@
 <% if type == "setting" %>
-  <%= form_with model: setting, url: master_data_path(type: "setting"), method: :post, data: { turbo: false }, class: "mx-auto w-50" do |f| %>
+  <% record = setting %>
+  <% url = record.persisted? ? master_datum_path(record, type: "setting") : master_data_path(type: "setting") %>
+  <% method = record.persisted? ? :patch : :post %>
+  
+  <%= form_with model: record, url: url, method: method, data: { turbo: false }, class: "mx-auto w-50" do |f| %>
     <div class="mb-3">
       <%= f.label :name, "設定名" %>
       <%= f.text_field :name, class: "form-control", placeholder: "20文字以内で入力してください" %>
@@ -19,12 +23,16 @@
     </div>
 
     <div class="text-end">
-      <%= f.submit "登録する", class: "btn btn-primary px-4" %>
+      <%= f.submit (record.persisted? ? "更新する" : "登録する"), class: "btn btn-primary px-4" %>
     </div>
   <% end %>
 
 <% elsif type == "product" %>
-  <%= form_with model: product, url: master_data_path(type: "product"), method: :post, data: { turbo: false }, class: "mx-auto w-50" do |f| %>
+  <% record = product %>
+  <% url = record.persisted? ? master_datum_path(record, type: "product") : master_data_path(type: "product") %>
+  <% method = record.persisted? ? :patch : :post %>
+  
+  <%= form_with model: record, url: url, method: method, data: { turbo: false }, class: "mx-auto w-50" do |f| %>
     <div class="mb-3">
       <%= f.label :name, "製品名" %>
       <%= f.text_field :name, class: "form-control", placeholder: "20文字以内で入力してください" %>
@@ -39,7 +47,7 @@
     </div>
 
     <div class="text-end">
-      <%= f.submit "登録する", class: "btn btn-primary px-4" %>
+      <%= f.submit (record.persisted? ? "更新する" : "登録する"), class: "btn btn-primary px-4" %>
     </div>
   <% end %>
 <% end %>

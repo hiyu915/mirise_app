@@ -28,7 +28,9 @@
           <td><%= number_to_currency(r.price, unit: "", precision: 0) %> 円</td>
           <td><%= r.created_at.strftime("%Y-%m-%d") if r.created_at.present? %></td>
           <td>
-            <%= link_to "編集", edit_master_datum_path(r, type: type), class: "btn btn-sm btn-outline-primary me-2" %>
+            <%= link_to "編集", edit_master_datum_path(r, type: type), 
+                        class: "btn btn-sm btn-outline-primary me-2",
+                        data: { turbo_frame: "_top" } %>
             <%= link_to "削除", master_datum_path(r, type: type),
                         data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" },
                         class: "btn btn-sm btn-outline-danger" %>
@@ -40,7 +42,9 @@
           <td><%= number_to_currency(r.price, unit: "", precision: 0) %> 円</td>
           <td><%= r.created_at.strftime("%Y-%m-%d") if r.created_at.present? %></td>
           <td>
-            <%= link_to "編集", edit_master_datum_path(r, type: "product"), class: "btn btn-sm btn-outline-primary me-2" %>
+            <%= link_to "編集", edit_master_datum_path(r, type: type), 
+                        class: "btn btn-sm btn-outline-primary me-2",
+                        data: { turbo_frame: "_top" } %>
             <%= link_to "削除", master_datum_path(r, type: "product"),
                         data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" },
                         class: "btn btn-sm btn-outline-danger" %>
