@@ -1,0 +1,45 @@
+<% if type == "setting" %>
+  <%= form_with model: setting, url: master_data_path(type: "setting"), method: :post, data: { turbo: false }, class: "mx-auto w-50" do |f| %>
+    <div class="mb-3">
+      <%= f.label :name, "設定名" %>
+      <%= f.text_field :name, class: "form-control", placeholder: "20文字以内で入力してください" %>
+    </div>
+
+    <div class="mb-3">
+      <%= f.label :pos_numbers, "POS番号" %>
+      <%= f.text_field :pos_numbers, class: "form-control" %>
+    </div>
+
+    <div class="mb-3">
+      <%= f.label :price, "価格" %>
+      <div class="input-group">
+        <%= f.number_field :price, class: "form-control" %>
+        <span class="input-group-text">円（税込）</span>
+      </div>
+    </div>
+
+    <div class="text-end">
+      <%= f.submit "登録する", class: "btn btn-primary px-4" %>
+    </div>
+  <% end %>
+
+<% elsif type == "product" %>
+  <%= form_with model: product, url: master_data_path(type: "product"), method: :post, data: { turbo: false }, class: "mx-auto w-50" do |f| %>
+    <div class="mb-3">
+      <%= f.label :name, "製品名" %>
+      <%= f.text_field :name, class: "form-control", placeholder: "20文字以内で入力してください" %>
+    </div>
+
+    <div class="mb-3">
+      <%= f.label :price, "価格" %>
+      <div class="input-group">
+        <%= f.number_field :price, class: "form-control" %>
+        <span class="input-group-text">円（税込）</span>
+      </div>
+    </div>
+
+    <div class="text-end">
+      <%= f.submit "登録する", class: "btn btn-primary px-4" %>
+    </div>
+  <% end %>
+<% end %>

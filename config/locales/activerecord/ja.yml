@@ -7,3 +7,10 @@ ja:
         name: ユーザー名
         password: パスワード
         password_confirmation: パスワード確認
+        product:
+          name: "製品名"
+          price: "価格"
+        setting:
+          name: "設定名"
+          price: "価格"
+          pos_numbers: "POS番号"

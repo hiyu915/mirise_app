@@ -1,0 +1,21 @@
+<div class="container mt-4">
+  <h2 class="text-center mb-4">マスターデータの追加</h2>
+
+  <div class="text-center mb-4">
+    <%= form_with url: new_master_datum_path, method: :get, data: { turbo_frame: "master_form" }, class: "d-inline-block" do %>
+      <div class="form-check form-check-inline">
+        <%= radio_button_tag :type, "setting", @type == "setting", id: "type_setting", onchange: "this.form.requestSubmit()" %>
+        <%= label_tag :type_setting, "設定", class: "form-check-label" %>
+      </div>
+
+      <div class="form-check form-check-inline">
+        <%= radio_button_tag :type, "product", @type == "product", id: "type_product", onchange: "this.form.requestSubmit()" %>
+        <%= label_tag :type_product, "製品", class: "form-check-label" %>
+      </div>
+    <% end %>
+  </div>
+
+  <%= turbo_frame_tag "master_form" do %>
+    <%= render partial: "form", locals: { type: @type, setting: @setting, product: @product } %>
+  <% end %>
+</div>

@@ -1,0 +1,27 @@
+<div class="container my-5">
+  <h1 class="mb-4 text-center">マスターデータ一覧</h1>
+
+  <!-- ▼ 設定 or 製品 切り替えフォーム -->
+  <div class="text-center mb-4">
+    <%= form_with url: master_data_path, method: :get, data: { turbo_frame: "master_table" }, class: "d-inline-block" do %>
+      <div class="form-check form-check-inline">
+        <%= radio_button_tag :type, "setting", @type == "setting", id: "type_setting", onchange: "this.form.requestSubmit()" %>
+        <%= label_tag :type_setting, "設定", class: "form-check-label" %>
+      </div>
+
+      <div class="form-check form-check-inline">
+        <%= radio_button_tag :type, "product", @type == "product", id: "type_product", onchange: "this.form.requestSubmit()" %>
+        <%= label_tag :type_product, "製品", class: "form-check-label" %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="text-end mb-3">
+    <%= link_to 'マスターデータを追加', new_master_datum_path(type: @type), class: 'btn btn-primary' %>
+  </div>
+
+  <!-- Turbo Frameで部分更新 -->
+  <%= turbo_frame_tag "master_table" do %>
+    <%= render "table", records: @records, type: @type %>
+  <% end %>
+</div>

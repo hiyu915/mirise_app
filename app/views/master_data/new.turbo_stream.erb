@@ -1,0 +1,3 @@
+<%= turbo_stream.replace "master_form" do %>
+  <%= render partial: "form", locals: { type: @type, setting: @setting, product: @product } %>
+<% end %>

@@ -18,7 +18,7 @@
     <% end %>
 
     <!-- ✅ フラッシュメッセージ表示エリア -->
-    <div class="container mt-3">
+    <div id="flash" class="container mt-3">
       <% flash.each do |key, message| %>
         <div class="alert alert-<%= key == "notice" ? "success" : "danger" %> alert-dismissible fade show text-center" role="alert">
           <%= message %>
