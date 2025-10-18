@@ -68,7 +68,7 @@ class MasterDataController < ApplicationController
   private
 
   def setting_params
-    params.require(:setting).permit(:name, :price, :pos_numbers)
+    params.require(:setting).permit(:name, :price, :pos_numbers, :anshin_price)
   end
 
   def product_params
