@@ -10,7 +10,7 @@
     </div>
 
     <div class="mb-3">
-      <%= f.label :pos_numbers, "POS番号" %>
+      <%= f.label :pos_numbers, "JANコード" %>
       <%= f.text_field :pos_numbers, class: "form-control" %>
     </div>
 
@@ -18,6 +18,14 @@
       <%= f.label :price, "価格" %>
       <div class="input-group">
         <%= f.number_field :price, class: "form-control" %>
+        <span class="input-group-text">円（税込）</span>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <%= f.label :anshin_price, "安心価格" %>
+      <div class="input-group">
+        <%= f.number_field :anshin_price, class: "form-control" %>
         <span class="input-group-text">円（税込）</span>
       </div>
     </div>
