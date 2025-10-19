@@ -1,0 +1,32 @@
+<div class="container py-5">
+  <div class="text-center mb-4">
+    <h2 class="fw-bold">その他の内容を追加</h2>
+  </div>
+
+  <table class="table table-bordered w-75 mx-auto align-middle">
+    <thead class="table-light">
+      <tr>
+        <th>製品名</th>
+        <th>価格</th>
+        <th>操作</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @products.each do |product| %>
+        <tr>
+          <td><%= product.name %></td>
+          <td><%= number_to_currency(product.price) %></td>
+          <td>
+            <%= button_to "追加", quote_pages_add_product_item_path(id: product.id),
+                  method: :post,
+                  class: "btn btn-sm btn-primary" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <div class="text-center mt-4">
+    <%= link_to "確認へ戻る", root_path, class: "btn btn-success px-4" %>
+  </div>
+</div>
