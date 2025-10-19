@@ -1,0 +1,61 @@
+<div class="container py-5">
+  <div class="text-center mb-4">
+    <h2 class="fw-bold">設定内容を追加</h2>
+  </div>
+
+  <!-- 種別選択 -->
+  <div class="mb-3 text-center">
+    <div class="btn-group" role="group">
+      <%= form_with url: quote_pages_add_setting_path, method: :get, local: true do %>
+        <%= radio_button_tag :type, "general", params[:type] != "safe", id: "type_general" %>
+        <%= label_tag "type_general", "一般", class: "mx-2" %>
+        <%= radio_button_tag :type, "safe", params[:type] == "safe", id: "type_safe" %>
+        <%= label_tag "type_safe", "安心", class: "mx-2" %>
+        <%= submit_tag "切り替え", class: "btn btn-outline-secondary btn-sm ms-3" %>
+      <% end %>
+    </div>
+  </div>
+
+  <!-- 現在の価格タイプ表示 -->
+  <div class="text-center mb-4">
+    <% current_type = params[:type] == "safe" ? "安心" : "一般" %>
+    <span class="badge bg-info text-dark fs-6">
+      現在の価格タイプ：<%= current_type %>
+    </span>
+  </div>
+
+  <!-- 設定一覧 -->
+  <table class="table table-bordered w-75 mx-auto align-middle">
+    <thead class="table-light">
+      <tr>
+        <th>設定名</th>
+        <th>価格</th>
+        <th>操作</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @settings.each do |setting| %>
+        <tr>
+          <td><%= setting.name %></td>
+          <td>
+            <% if params[:type] == "safe" %>
+              <%= number_to_currency(setting.anshin_price) %>
+            <% else %>
+              <%= number_to_currency(setting.price) %>
+            <% end %>
+          </td>
+          <td>
+            <%= button_to "追加", quote_pages_add_setting_item_path(id: setting.id, type: params[:type]),
+                  method: :post,
+                  class: "btn btn-sm btn-primary" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <!-- 確認ボタン -->
+  <div class="text-center mt-4">
+    <%= link_to "確認へ戻る", root_path, class: "btn btn-success px-4" %>
+  </div>
+</div>
